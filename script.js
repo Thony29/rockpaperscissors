@@ -16,8 +16,7 @@ let getComputerChoice = () => {
 
 let game = (userChoice) => {
   const computerChoice = getComputerChoice();
-  console.log(computerChoice);
-  console.log(`user  ${userChoice}`);
+  
 };
 game();
 let main = () => {
