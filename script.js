@@ -1,5 +1,7 @@
 let userScore = 0;
 let computerScore = 0;
+
+
 const userScore_span = document.getElementById("user-score");
 const computerScore_span = document.getElementById("computer-score");
 const scoreBoard_div = document.querySelector(".score-board");
@@ -19,31 +21,47 @@ let convertToWord = (letter) => {
   if (letter === "p") return "paper";
   return "Scissors";
 };
-
+//win
 let win = (user, computer) => {
   userScore++;
   userScore_span.innerHTML = userScore;
   // const smallUserWord = "user".fontsize(3).sub();
   // const smallCompWord = "comp".fontsize(3);
-  result_p.innerHTML = `${convertToWord(
-    user
-  )}  beats ${convertToWord(
-    computer
-  )}. you win!! 🔥 `;
+  if (userScore === 5) {
+    result_p.innerHTML = "Game over, You win (reload page)";
+    
+  } else {
+    result_p.innerHTML = `${convertToWord(user)} beats ${convertToWord(
+      computer
+    )}. User wins!! 🔥 `;
+  }
+  
+  // }
 };
+//lose
 let lose = (user, computer) => {
   computerScore++;
   computerScore_span.innerHTML = computerScore;
-  result_p.innerHTML = `${convertToWord(user)} beats ${convertToWord(
-    computer
-  )}. Computer wins!! 🔥 `;
+
+  if (computerScore === 5) {
+    result_p.innerHTML = "Game over, You Lost (reload page)";
+    reset();
+  } else {
+    result_p.innerHTML = `${convertToWord(user)} beats ${convertToWord(
+      computer
+    )}. Computer wins!! 🔥 `;
+  }
+  //
+  
 };
 let draw = (user, computer) => {
   result_p.innerHTML = `${convertToWord(user)} ${convertToWord(
     computer
   )}. It'\s a draw 🔥 `;
-}
+};
 //game rules
+
+
 
 let game = (userChoice) => {
   const computerChoice = getComputerChoice();
@@ -83,3 +101,4 @@ let main = () => {
   });
 };
 main();
+
